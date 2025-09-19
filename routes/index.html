@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 2.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      padding: 20px 40px;
+    }
+
+    li {
+      margin: 12px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s forwards;
+    }
+
+    /* animation delay for each li */
+    li:nth-child(1) { animation-delay: 0.2s; }
+    li:nth-child(2) { animation-delay: 0.4s; }
+    li:nth-child(3) { animation-delay: 0.6s; }
+    li:nth-child(4) { animation-delay: 0.8s; }
+    li:nth-child(5) { animation-delay: 1s; }
+    li:nth-child(6) { animation-delay: 1.2s; }
+    li:nth-child(7) { animation-delay: 1.4s; }
+    li:nth-child(8) { animation-delay: 1.6s; }
+    li:nth-child(9) { animation-delay: 1.8s; }
+    li:nth-child(10) { animation-delay: 2s; }
+    li:nth-child(11) { animation-delay: 2.2s; }
+    li:nth-child(12) { animation-delay: 2.4s; }
+    li:nth-child(13) { animation-delay: 2.6s; }
+    li:nth-child(14) { animation-delay: 2.8s; }
+    li:nth-child(15) { animation-delay: 3s; }
+
+    a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      padding: 8px 14px;
+      display: inline-block;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    a:hover {
+      background: white;
+      color: #2575fc;
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Welcome To Projects</h1>
+    <ul>
+    <li><a href="../skillProgressAnimation.html">Skill Bar Animation</a></li>
+      <li><a href="../backgroundEffect.html">BackgroundEffect</a></li>
+      <li><a href="../card.html">Card</a></li>
+      <li><a href="../clock.html">Clock</a></li>
+      <li><a href="../dataChecker.html">On-OFF line</a></li>
+      <li><a href="../faceForPosition.html">Face</a></li>
+      <li><a href="../flipCardImgText.html">Flip on Hover</a></li>
+      <li><a href="../imgHoverText.html">Text on hover</a></li>
+      <li><a href="../loader.html">Loader</a></li>
+      <li><a href="../onePageLayout.html">Layout Practice</a></li>
+      <li><a href="../portfolioFromChatBot.html">Portfolio Random</a></li>
+      <li><a href="../progressCounter.html">Count Bar</a></li>
+      <li><a href="../skillProgressAnimation.html">Skill Bar Animation</a></li>
+      <li><a href="../textAnimation.html">Text Animation</a></li>
+      <li><a href="../toggleShowText.html">Toggle Click</a></li>
+      <li><a href="../speechMike.html">Write and Listen</a></li>
+    </ul>
+  </div>
+</body>
+</html>
