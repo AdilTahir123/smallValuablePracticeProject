@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Particles.js - Green Background</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color:green;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="container">
+    <h1>Logo</h1>
+    <ul>
+      <li>Home</li>
+    <li></li>
+    <li></li>
+    <li></li></ul>
+  </div>
+
+      <div class="nav-container">
+      <div class="logo">Adil Mart</div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Deals</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <div class="nav-icons">
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+        <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script>
+    // Load particles.js from CDN and run
+    fetch("https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js")
+      .then(res => res.text())
+      .then(code => {
+        eval(code); // Evaluate the library
+
+        // Initialize particles
+        particlesJS("particles-js", {
+          particles: {
+            number: {
+              value: 80,
+              density: {
+                enable: true,
+                value_area: 800
+              }
+            },
+            color: { value: "#ffffff" },
+            shape: { type: "circle" },
+            opacity: {
+              value: 0.5,
+              random: false
+            },
+            size: {
+              value: 3,
+              random: true
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#ffffff",
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 4,
+              direction: "none",
+              random: false,
+              straight: false,
+              bounce: false
+            }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          },
+          retina_detect: true
+        });
+      });
+  </script>
+</body>
+</html>

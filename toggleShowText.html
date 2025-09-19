@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Light Toggle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    .light, .dark {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: background 0.8s ease, color 0.8s ease;
+    }
+
+    .light {
+      background-color: white;
+      color: green;
+    }
+
+    .dark {
+      background-color: black;
+      color: red;
+    }
+
+    /* dark mode message with fade + glow */
+    .dark::after {
+      content: 'Adil I LOVE YOU💙';
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.2rem;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    /* responsive adjust */
+    @media(max-width: 748px) {
+      .dark::after {
+        top: 70%;
+        font-size: 1.6rem;
+      }
+    }
+
+    #btn {
+      color: white;
+      background-color: palegreen;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      z-index: 10; /* button always clickable */
+    }
+
+    #btn:hover {
+      background-color: green;
+    }
+
+    /* fade in keyframes */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translate(-5%, -40%); color: green; }
+      50%{opacity: 0.5; transform: translate(-50%,-4%); color: red;}
+      100% { opacity: 1; transform: translate(-50%, -50%); color: white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="light" id="container">
+    <h1 style="margin: 10px;">Adil Tahir</h1>
+    <button id="btn">Dark Mode</button>
+  </div>
+
+  <script>
+    let btn = document.getElementById('btn');
+    let container = document.getElementById('container');
+
+    btn.addEventListener('click', () => {
+      if (container.classList.contains('light')) {
+        container.classList.remove('light');
+        container.classList.add('dark');
+        btn.textContent = "Light Mode";
+      } else {
+        container.classList.remove('dark');
+        container.classList.add('light');
+        btn.textContent = "Dark Mode";
+      }
+    });
+  </script>
+</body>
+</html>
