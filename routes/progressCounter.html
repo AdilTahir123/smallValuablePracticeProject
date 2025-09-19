@@ -1,20 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Range Slider with Counter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    input[type="range"] {
+      width: 300px;
+      appearance: none;
+      height: 8px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #4caf50, #81c784);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Custom thumb */
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #4caf50;
+      border: 2px solid #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    div {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #count {
+      color: green;
+    }
+  </style>
 </head>
 <body>
-<input id="input" type="range" min="0" max="100" value="50"/>
-<div>Count is <span id="count">50</span></div>
-<script>
-const input=document.getElementById('input');
-const count=document.getElementById('count');
-count.innerText=input.value;
-input.oninput=function(){
-    count.innerText=this.value;
-}
-    </script>
+  <input id="input" type="range" min="0" max="100" value="50"/>
+  <div>Count is <span id="count">50</span></div>
+
+  <script>
+    const input = document.getElementById('input');
+    const count = document.getElementById('count');
+
+    count.innerText = input.value;
+
+    input.oninput = function() {
+      count.innerText = this.value;
+    }
+  </script>
 </body>
 </html>

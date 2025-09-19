@@ -26,19 +26,20 @@
       align-items: center;
       position: relative;
       transition: background 0.8s ease, color 0.8s ease;
+      gap: 20px; /* spacing between items */
     }
 
     .light {
-      background-color: white;
+      background-color: #ffffff;
       color: green;
     }
 
     .dark {
-      background-color: black;
+      background-color: #000000;
       color: red;
     }
 
-    /* dark mode message with fade + glow */
+    /* glowing love message */
     .dark::after {
       content: 'Adil I LOVE YOU💙';
       position: absolute;
@@ -46,12 +47,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 2.2rem;
-      color: white;
       font-weight: bold;
       text-align: center;
+      color: white;
       opacity: 0;
-      animation: fadeIn 3s forwards;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+      animation: fadeIn 2s forwards, glow 2s infinite alternate;
     }
 
     /* responsive adjust */
@@ -64,49 +64,49 @@
 
     #btn {
       color: white;
-      background-color: palegreen;
+      background: linear-gradient(135deg, #32cd32, #228b22);
       border: none;
-      padding: 10px 20px;
+      padding: 12px 28px;
       border-radius: 30px;
-      margin: 10px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
-      z-index: 10; /* button always clickable */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     #btn:hover {
-      background-color: green;
+      background: linear-gradient(135deg, #228b22, #006400);
+      transform: scale(1.1);
     }
 
-    /* fade in keyframes */
+    /* fade in */
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translate(-5%, -40%); color: green; }
-      50%{opacity: 0.5; transform: translate(-50%,-4%); color: red;}
-      100% { opacity: 1; transform: translate(-50%, -50%); color: white; }
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* glowing pulse */
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; }
+      to   { text-shadow: 0 0 20px #ff0, 0 0 40px #ff0, 0 0 60px #ff0; }
     }
   </style>
 </head>
 <body>
   <div class="light" id="container">
-    <h1 style="margin: 10px;">Adil Tahir</h1>
+    <h1>Adil Tahir</h1>
     <button id="btn">Dark Mode</button>
   </div>
 
   <script>
-    let btn = document.getElementById('btn');
-    let container = document.getElementById('container');
+    const btn = document.getElementById('btn');
+    const container = document.getElementById('container');
 
     btn.addEventListener('click', () => {
-      if (container.classList.contains('light')) {
-        container.classList.remove('light');
-        container.classList.add('dark');
-        btn.textContent = "Light Mode";
-      } else {
-        container.classList.remove('dark');
-        container.classList.add('light');
-        btn.textContent = "Dark Mode";
-      }
+      container.classList.toggle('light');
+      container.classList.toggle('dark');
+      btn.textContent = container.classList.contains('dark') ? "Light Mode" : "Dark Mode";
     });
   </script>
 </body>

@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            font-family: sans-serif;
-        }
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-size: 40px;
-        }
-        div::before{
-              content: '';
-            width: 100px;
-            height: 2px;
-            margin: 4px;
-            color: green;
-            background-color: red;
-        }
-        div::after{
-            content: '';
-            width: 100px;
-            height: 2px;
-            margin: 4px;
-            color: green;
-            background-color: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status Checker</title>
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    div::before, div::after {
+      content: '';
+      width: 100px;
+      height: 2px;
+      margin: 10px;
+      background-color: red;
+    }
+  </style>
 </head>
 <body>
-    <div>Status</div>
-    <script>
-        let p=document.querySelector('div');
-        navigator.online? p.innerHTML="online":p.innerHTML='offline'
-         navigator.online? p.innerHTML="online":p.style.color='red'
-        // if(navigator.online){
-        //     p.innerHTML='online';
-        //     p.style.color='green';
-        // }
-        // else{
-        //     p.innerHTML='offline';
-        //     p.style.color='red';
-        // }
-        let a='Adil';
-        let b=a.substring(0,2);
-        console.log(b);
-    </script>
+  <div id="status">Checking...</div>
+
+  <script>
+    const p = document.getElementById('status');
+
+    function updateStatus() {
+      if (navigator.onLine) {
+        p.textContent = 'Online ✅';
+        p.style.color = 'green';
+      } else {
+        p.textContent = 'Offline ❌';
+        p.style.color = 'red';
+      }
+    }
+
+    // Initial check
+    updateStatus();
+
+    // Listen to online/offline events
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+
+    // Example of substring
+    let a = 'Adil';
+    let b = a.substring(0, 2);
+    console.log(b); // "Ad"
+  </script>
 </body>
 </html>

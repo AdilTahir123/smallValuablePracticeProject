@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Animation</title>
-    <style>
-        body{
-            display: flex;
-            font-family: sans-serif;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: white;
-            color: green;
-        }
-        h1{
-            font-size: 2rem;
-        }
-        #typing{
-            border-right: 2px solid green;
-            padding-right: 5px;
-            animation: blink 0.7s infinite;
-        }
-        @keyframes blink {
-            50%{
-                border-color: transparent;
-            }
-            
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Animation</title>
+  <style>
+    body {
+      display: flex;
+      font-family: sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: white;
+      color: green;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    #typing {
+      border-right: 2px solid green;
+      padding-right: 5px;
+      animation: blink 0.7s infinite;
+      white-space: nowrap; /* prevents wrapping */
+      overflow: hidden;    /* keeps text clean */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>I am  <span id="typing"></span></h1>
-    </div>
-    <script>
-        const typingElement=document.getElementById('typing');
-        const textArray=['Developer','Designer','Freelancer'];
-        let textIndex=0;
-        let charIndex=0;
-        let isDeleting=false;
-        function typeEffect(){
-            let currentIndex=textArray[textIndex];
-        if(isDeleting){
-            typingElement.textContent=currentIndex.substring(0,charIndex--)
-        }
-        else{
-            typingElement.textContent=currentIndex.substring(0,charIndex++);
-        }
-        if(!isDeleting && charIndex===currentIndex.length){
-            isDeleting=true;
-            setTimeout(typeEffect,1000);
-            return;
-        }
-        else if(isDeleting && charIndex===0){
-            isDeleting=false;
-            textIndex=(textIndex+1)% textArray.length;
-        }
-        setTimeout(typeEffect, isDeleting?200:300);
+  <div class="container">
+    <h1>I am <span id="typing"></span></h1>
+  </div>
+
+  <script>
+    const typingElement = document.getElementById('typing');
+    const textArray = ['Developer', 'Designer', 'Freelancer'];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentText = textArray[textIndex];
+
+      if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex--);
+      } else {
+        typingElement.textContent = currentText.substring(0, charIndex++);
+      }
+
+      if (!isDeleting && charIndex === currentText.length) {
+        // pause at full word
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+        return;
+      } else if (isDeleting && charIndex === 0) {
+        // move to next word
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length;
+      }
+
+      setTimeout(typeEffect, isDeleting ? 100 : 200);
     }
+
     typeEffect();
-     </script>
+  </script>
 </body>
 </html>
