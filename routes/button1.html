@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn{
+        width: 150px;
+        height: 150px;
+        background: conic-gradient(white 0% 25%,red 25% 60%,yellow 60% 75%,white 75% 100%);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 80px;
+        position: relative;
+    }
+    .btn::before{
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 80px;
+        background: blue;
+        border-radius: 20px;
+        z-index: 1;
+    }
+    .btn::after{
+        content:'';
+        position: absolute;
+        top: 146px;
+        border-radius: 20px;
+        width: 10px;
+        height: 26px;
+        z-index: -1;
+        background: green;
+    }
+    .circle{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        border-radius: 50%;
+        position:absolute;
+        z-index: 0;
+    }
+</style>
+<body>
+    <div class="btn"></div>
+    <div class="circle"></div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    .container {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    .btn1{
+        background-color: gray;
+        font-size: large;
+        width: 60px;
+        height: 60px;
+        border-bottom-left-radius: 20px;
+    }
+    .in{
+        position: relative;
+    }
+    input{
+        border: none;
+        outline: none;
+        font-size: large;
+        padding-left: 40px;
+        width: 300px;
+        height: 60px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .search1{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        padding: 10px;
+        font-size: large;
+        color: gray;
+    }
+    .search2{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: blue;
+        border-radius: 20px 2px 20px 2px;
+        padding: 10px;
+        font-size: large;
+        color: gray;
+        cursor: pointer;
+    }
+    .btn2{
+       padding: 2px 5px;
+       margin: 9px;
+       border: none;
+       font-size: large; 
+       background: transparent;
+    }
+</style>
+<body>
+    <div class="container">
+        <button class="btn1">
+            📶
+        </button>
+        <div class="in">
+            <input type="text" placeholder="Type here to search">
+            <p class="search1">🔎</p>
+            <p class="search2">☪</p>
+        </div>
+          <button class="btn2">
+        ♓
+    </button>
+    <button class="btn2">
+        ♈
+    </button>
+    <button class="btn2">
+        ♉
+    </button>
+</div>
+
+</body>
+</html>

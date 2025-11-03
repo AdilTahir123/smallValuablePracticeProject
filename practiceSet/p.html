@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecommerce Navbar with GSAP Animation</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style></style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+    }
+
+    nav {
+      width: 100%;
+      background-color: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      font-size: 18px;
+      position: relative;
+      transition: all 0.3s ease;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 22px;
+      color: white;
+    }
+
+    .cart {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 5px;
+      border-radius: 50%;
+    }
+
+    .icons i {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .icons i:hover {
+      transform: scale(1.2);
+      color: #007bff;
+    }
+
+    /* Hamburger icon */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        padding: 10px 20px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        opacity: 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links a {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body style="background:#222;">
+
+  <nav>
+    <div class="logo">Forever</div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#" class="active">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+      <i class="fas fa-bars hamburger" id="menuToggle"></i>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    let menuOpen = false;
+    // GSAP initial setup (mobile only)
+    function setMobileMenuInitial() {
+      if (window.innerWidth <= 768) {
+        gsap.set(navLinks, { height: 0, opacity: 0, display: "none" });
+      } else {
+        gsap.set(navLinks, { clearProps: "all" });
+        navLinks.style.display = "flex";
+      }
+    }
+
+    setMobileMenuInitial();
+
+    window.addEventListener('resize', setMobileMenuInitial);
+
+    menuToggle.addEventListener('click', () => {
+      if (!menuOpen) {
+        navLinks.style.display = "flex";
+        gsap.to(navLinks, {
+          duration: 0.5,
+          height: "auto",
+          opacity: 1,
+          ease: "power2.out"
+        });
+      } else {
+        gsap.to(navLinks, {
+          duration: 0.4,
+          height: 0,
+          opacity: 0,
+          ease: "power2.in",
+          onComplete: () => navLinks.style.display = "none"
+        });
+      }
+      menuOpen = !menuOpen;
+    });
+  </script>
+
+</body>
+</html>

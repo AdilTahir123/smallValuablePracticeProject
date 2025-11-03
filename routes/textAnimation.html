@@ -43,12 +43,14 @@
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-
+    console.log(textIndex);
     function typeEffect() {
       const currentText = textArray[textIndex];
+   //console.log(currentText); Current Word
 
       if (isDeleting) {
         typingElement.textContent = currentText.substring(0, charIndex--);
+
       } else {
         typingElement.textContent = currentText.substring(0, charIndex++);
       }

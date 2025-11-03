@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .content{
+        display: none;
+    }
+    input[type="radio"]:checked +label + .content{
+        display: block;
+    }
+    form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+    }
+</style>
+<body>
+    <form action="">
+        <input type="radio" id="shape" name="shape" value="circle">
+        <label for="shape">Product</label>
+        <p class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, earum. Illum fuga quas commodi repellat architecto porro? Sapiente cupiditate voluptates qui reiciendis ex. Nulla fugit voluptate repellat cum quasi laborum.
+        </p>
+           <input type="radio" id="shape" name="shape" value="circle">
+        <label for="shape">Product</label>
+        <p class="content">
+            I am other
+           </p>
+               <input type="radio" id="shape" name="shape" value="circle">
+        <label for="shape">Product</label>
+        <p class="content">
+            I am third
+           </p>
+               <input type="radio" id="shape" name="shape" value="circle">
+        <label for="shape">Product</label>
+        <p class="content">
+            I am forth
+           </p>
+     
+
+    </form>
+</body>
+</html>
