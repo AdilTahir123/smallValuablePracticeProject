@@ -1,0 +1,205 @@
+   * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        color: white;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        padding: 10px;
+    }
+
+    nav h1 {
+        color: white;
+        margin: 0 15px;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav ul li {
+        list-style: none;
+        margin: 0 30px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        color: rgb(248, 244, 244);
+    }
+
+    nav ul li a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 10px;
+        position: relative;
+    }
+
+    input {
+        flex: 1;
+        width: 270px;
+        padding: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: large;
+    }
+
+    form button {
+        position: absolute;
+        right: 0;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background:red ;
+        cursor: pointer;
+        font-size: medium;
+        color: white;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    form button:hover {
+        background: darkred;
+    }
+    /* ............................................hero-section........................................... */
+    /* .hero-section {
+        display: flex;
+    } */
+    .left{
+        display: flex;
+        width: 100%;
+        background: rgb(71, 3, 3);
+        height: 92vh;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .left .top {
+        padding: 20px ;
+        font-size: 30px;
+        margin: auto 60px;
+    }
+    .left button{
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin: 20px 42px;
+    }
+    .left img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .right{
+        width: 50%;
+        background: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .right img{
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        }
+        .hide{
+            display: none;
+        }
+        .active{
+            display: block;
+        }
+        .top img{
+            position: absolute;
+            bottom: 150px;
+            right: 100px;
+            width: 300px;
+            height: 300px;
+        }
+
+
+    @media (max-width:885px) {
+        body{
+            overflow: hidden;
+        }
+        nav {
+            flex-direction: column;
+            gap: 20px;
+            width: 100vw;
+        }
+
+        form {
+            width: 100vw;
+            display: flex;
+            position: relative;
+            top: 10px;
+        }
+        form button,input {
+            border-radius: 0px;
+        }
+        .left{
+            background: transparent;
+            width: 100vw;
+            height: 77vh;
+        }
+        .left h2,p{
+            width: 100vw;
+        }
+        .top img{
+            position: absolute;
+            bottom: 100px;
+            right: 55px;
+            width: 250px !important;
+            height: 250px !important;
+        }
+        .left img{
+            width: 80px;
+            height: 80px;
+        }
+        .left button{
+        display: flex;
+        position: relative;
+        bottom:  50px;
+        right: 30px;
+        }
+        .left .top{
+            font-size: 24px;
+            margin:20px 40px;
+            text-align: center;
+        }
+
+    }

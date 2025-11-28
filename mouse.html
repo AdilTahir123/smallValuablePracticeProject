@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="style1.css">
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+</head>
+<body>
+<header>
+<nav id="nav">
+<h1>Adil Shop</h1>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#product">Product</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<form>
+<label for="search"></label>
+<input type="text" placeholder="search here" name="search:" id="search">
+<button>Search</button>
+</form>
+</nav>
+</header>
+<!-- Hero Section -->
+<div class="hero-section">
+<div class="left" id="left">
+<div class="top">
+<div id="coke">
+<h2>Coca-cola</h2>
+<p>Quick Delivery with delicious Taste</p>
+<img src="./coca-cola.jpeg" alt="">
+</div>
+<div id="fanta" class="hide">
+<h2>Fanta</h2>
+<p>Quick Delivery with delicious Taste</p>
+<img src="./fanta.jpeg" alt="">
+</div>
+<div id="sprite" class="hide">
+<h2>Sprite</h2>
+<p>Quick Delivery with delicious Taste</p>
+<img src="./sprite.jpeg" alt="">
+</div>
+<div id="water" class="hide">
+<h2>Water</h2>
+<p>Quick Delivery with delicious Taste</p>
+<img src="./water.jpeg" alt="">
+</div>
+</div>
+
+<div class="bottom">
+<button class="active-btn"><img src="./download.png" alt=""></button>
+<button><img src="./download.jpeg" alt="Hp"></button>
+<button><img src="./download 11(1).jpeg" alt="Dell"></button>
+<button><img src="./download111 (1).jpeg" alt=""></button>
+</div>
+</div>
+</div>
+<script>
+const sections = document.querySelectorAll(".top > div");
+const buttons = document.querySelectorAll(".bottom button");
+const left = document.getElementById("left");
+const nav = document.getElementById("nav");
+
+// Background & nav theme colors
+const themes = [
+    {bg:"#7c0303", nav:"#a50000"},   // Coke
+    {bg:"#e67f00", nav:"#ff9900"},   // Fanta
+    {bg:"#0f6f2f", nav:"#14b03d"},   // Sprite
+    {bg:"#0d4c8c", nav:"#1976d2"}    // Water
+];
+
+function hideAll() {
+    sections.forEach(sec => sec.classList.add("hide"));
+}
+
+function removeActive() {
+    buttons.forEach(btn => btn.classList.remove("active-btn"));
+}
+
+// GSAP animation function
+function animateSection(section){
+    const heading = section.querySelector("h2");
+    const paragraph = section.querySelector("p");
+    const img = section.querySelector("img");
+
+    // Text slide from left
+    gsap.fromTo([heading, paragraph],
+        {x:-100, opacity:0},
+        {x:0, opacity:1, duration:0.6, stagger:0.1, ease:"power2.out"}
+    );
+
+    // Image slide from right
+    if(img){
+        gsap.fromTo(img,
+            {x:100, opacity:0},
+            {x:0, opacity:1, duration:0.8, ease:"power2.out", delay:0.2}
+        );
+    }
+}
+
+// Tab click
+buttons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        hideAll();
+        removeActive();
+
+        const section = sections[index];
+        section.classList.remove("hide");
+        btn.classList.add("active-btn");
+
+        // Change background & nav color
+        left.style.background = themes[index].bg;
+        nav.style.background = themes[index].nav;
+
+        // Animate section
+        animateSection(section);
+    });
+});
+
+// Show first tab on load
+sections[0].classList.remove("hide");
+nav.style.background = themes[0].nav;
+left.style.background = themes[0].bg;
+animateSection(sections[0]);
+</script>
+</body>
+</html>
